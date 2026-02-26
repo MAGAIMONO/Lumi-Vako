@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumi-Vako v1.0 ユーザーズマニュアル</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&display=swap');
+
+        :root {
+            --primary-color: #4a6cf7;
+            --primary-glow: rgba(74, 108, 247, 0.3);
+            --accent-color: #ff9500;
+            --bg-color: #ffffff;
+            --text-color: #1d1d1f;
+            --muted-color: #86868b;
+            --border-color: #e5e5e7;
+            --section-bg: #f5f5f7;
+            --anchor-color: #0071e3;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --title-font: 'Outfit', sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #eeeeee;
+                --muted-color: #aaaaaa;
+                --border-color: #444444;
+                --section-bg: #2a2a2a;
+                --anchor-color: #58a6ff;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            line-height: 1.65;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: var(--title-font);
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, var(--primary-color), #b522f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 small {
+            font-size: 1.2rem;
+            font-weight: 400;
+            vertical-align: middle;
+            color: var(--muted-color);
+            margin-left: 10px;
+            -webkit-text-fill-color: var(--muted-color);
+        }
+
+        .subtitle {
+            font-family: var(--title-font);
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--muted-color);
+        }
+
+        nav {
+            background: var(--section-bg);
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 80px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        nav h2 {
+            margin-top: 0;
+            font-family: var(--title-font);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            display: block;
+            background: var(--bg-color);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        section {
+            margin-bottom: 100px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-family: var(--title-font);
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        h3 {
+            font-family: var(--title-font);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 25px;
+        }
+
+        .feature-box {
+            background: var(--section-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: scale(1.01);
+        }
+
+        .feature-title {
+            font-family: var(--title-font);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(74, 108, 247, 0.05) 0%, rgba(181, 34, 241, 0.05) 100%) !important;
+            border-color: var(--primary-glow) !important;
+        }
+
+        ul.bullet {
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        ul.bullet li {
+            margin-bottom: 12px;
+        }
+
+        ul.bullet li strong {
+            color: var(--text-color);
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 0.9em;
+        }
+
+        .tip {
+            border-left: 6px solid var(--accent-color);
+            background: rgba(255, 149, 0, 0.08);
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .warning {
+            border-left: 6px solid #ff3b30;
+            background: rgba(255, 59, 48, 0.08);
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 20px 20px 0;
+        }
+
+        dt {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        dd {
+            margin-left: 0;
+            margin-bottom: 30px;
+            color: var(--muted-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 120px;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--muted-color);
+            font-size: 0.95rem;
+            font-family: var(--title-font);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            nav ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Lumi-Vako <small>v1.0</small></h1>
+            <p class="subtitle">3Dフォトスタジオ・ユーザーズマニュアル</p>
+        </header>
+
+        <nav>
+            <h2>目次</h2>
+            <ul>
+                <li><a href="#intro">1. はじめに</a></li>
+                <li><a href="#environment">2. 動作環境・重要事項</a></li>
+                <li><a href="#ui-basic">3. 画面構成と基本操作</a></li>
+                <li><a href="#panel-left">4. 空間・照明設定（左パネル）</a></li>
+                <li><a href="#panel-right-add">5. モデル・オブジェクト追加</a></li>
+                <li><a href="#vrm-edit">6. VRM操作・ポージング詳細</a></li>
+                <li><a href="#bulk-op">7. 一括操作と効率化</a></li>
+                <li><a href="#capture">8. 撮影（通常・透過・一括）</a></li>
+                <li><a href="#scene-management">9. シーンの保存・読込</a></li>
+                <li><a href="#troubleshooting">10. トラブルシューティング</a></li>
+            </ul>
+        </nav>
+
+        <section id="intro">
+            <h2>1. はじめに</h2>
+            <p>Lumi-Vako（ルミ・バコ）は、ブラウザだけで動作する高機能な3Dフォトスタジオです。VRM形式のキャラクターモデルやお好みの3D小物を自由に配置し、ライティングや構図を凝らして自分だけの最高の一枚を撮影できます。
+            </p>
+            <div class="tip">
+                <strong>コンセプト：</strong>
+                「手軽に、本格的な撮影を」。インストール不要で、プロのようなライティングやアクリルスタンド風の加工を楽しめるツールです。
+            </div>
+        </section>
+
+        <section id="environment">
+            <h2>2. 動作環境・重要事項</h2>
+            <div class="warning">
+                <strong>【最重要】動作環境について</strong>
+                本ツールは<strong>PC（デスクトップブラウザ）専用</strong>です。スマートフォンやタブレットでの動作は保証しておらず、正しく操作できない場合が多いためご注意ください。
+            </div>
+            <p>推奨ブラウザ：Google Chrome / Microsoft Edge（いずれも最新版）</p>
+            <p>※3D描画を行うため、ブラウザ設定で「ハードウェアアクセラレーション」を有効にしてください。</p>
+        </section>
+
+        <section id="ui-basic">
+            <h2>3. 画面構成と基本操作</h2>
+            <ul class="bullet">
+                <li><strong>中央エリア:</strong> メインの3Dプレビュー画面です。</li>
+                <li><strong>左パネル:</strong> 空間背景、照明（グローバル/スポット）、視点（カメラ）の詳細設定。</li>
+                <li><strong>右パネル:</strong> ファイル読み込み、配置済みオブジェクトの一覧、編集（ポーズ/表情/変形）。</li>
+                <li><strong>マウス操作:</strong>
+                    <ul class="bullet">
+                        <li>左ドラッグ：カメラの回転</li>
+                        <li>右ドラッグ：カメラの平行移動</li>
+                        <li>ホイール：ズームイン / アウト</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="panel-left">
+            <h2>4. 空間・照明設定（左パネル）</h2>
+            <h3>🧱 部屋 (Room) 設定</h3>
+            <p>プリセットテーマ（モダン、サイバー、ホラー等）を選ぶだけで、壁・床・照明・Bloomが一括で切り替わります。
+                <br>各壁には独自の画像を貼り付けることも可能で、自分だけの撮影セットを作れます。
+            </p>
+
+            <h3>💡 照明 (Light) 設定</h3>
+            <ul class="bullet">
+                <li><strong>全体照明:</strong> 環境光の底上げと、メインライト（太陽光）の向き・色を調整します。</li>
+                <li><strong>スポットライト:</strong> Stage / Left / Center / Right の4灯を個別に制御。
+                    <br><span
+                        class="highlight">「選択中のオブジェクトを狙う」</span>ボタンを使うと、ライトのターゲット位置がキャラクターの現在地に自動追従し、常に最適なライティングを維持できます。
+                </li>
+            </ul>
+
+            <h3>✨ Bloom (発光)</h3>
+            <p>光が溢れ出すような「エモい」効果を調整します。強さ、半径、閾値を細かく設定して、サイバーパンクな雰囲気から柔らかな日差しまで作り込みましょう。</p>
+        </section>
+
+        <section id="panel-right-add">
+            <h2>5. モデル・オブジェクト追加</h2>
+            <p>「追加」タブから以下のファイルを読み込めます。</p>
+            <ul class="bullet">
+                <li><strong>VRMモデル:</strong> キャラクターを配置します（複数体可）。</li>
+                <li><strong>GLBモデル:</strong> 3Dの小道具や家具などを配置します。</li>
+                <li><strong>ポスター:</strong> 画像から額縁付きのアイテムを生成。壁に飾れます。</li>
+                <li><strong>アクスタ:</strong> 透過画像から奥行きのあるアクリルスタンド風パネルを生成。台座の形も選べます。</li>
+            </ul>
+        </section>
+
+        <section id="vrm-edit">
+            <h2>6. VRM操作・ポージング詳細</h2>
+            <p>VRMキャラクターをより魅力的に動かすための専用機能です。</p>
+
+            <h3>💃 ポーズと表情</h3>
+            <p>数多くのプリセットからポーズ、手の形（ハンドサイン）、表情を一括または個別に適用できます。
+                <br>さらに、自分で微調整したこだわりのポーズは<strong>「ポーズ保存」</strong>ボタンでファイルとして書き出し、後で別のモデルへ<strong>「ポーズ読込」</strong>して再利用することが可能です。
+            </p>
+
+            <h3>🎯 ボーン操作 (IKモード)</h3>
+            <p>「編集」タブにある的（ターゲット）アイコン 🎯 を押すと、直接手足をマウスで引っ張って動かせる <strong>IKモード</strong> になります。
+                <br>関節をドラッグして直感的に動かせるため、プリセットにない絶妙なニュアンスのポーズを作りたい時に最適です。
+            </p>
+            <div class="tip">
+                <strong>調整のヒント：</strong>
+                <ul class="bullet">
+                    <li><strong>接地:</strong> 浮いているモデルは「床に着地」ボタンで瞬時に接地させることができます。</li>
+                    <li><strong>接地位置の記憶:</strong> 特定の台座や家具の上に立たせたい場合、「接地位置を記憶」ボタンを使うとその高さを基準として着地するようになります。</li>
+                    <li><strong>目線:</strong> 「カメラ目線」をONにすると、カメラの動きに合わせてキャラクターが視線を追ってくれます。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="bulk-op">
+            <h2>7. 一括操作と効率化</h2>
+            <p>「一覧」タブには配置された全オブジェクトが表示されます。</p>
+            <div class="feature-box">
+                <div class="feature-title">🚚 一括操作モード (グループ移動)</div>
+                <p>一覧でチェックを入れた複数のオブジェクトを、現在の相対的な位置関係を維持したまままとめて移動・回転・スケール変更できます。
+                    <br>複数のキャラクターを並べたまま配置を調整したり、小物とキャラクターをセットで動かしたい時に非常に強力です。
+                </p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-title">🎭 VRMからアクスタ作成</div>
+                <p>選択中のVRMモデルを、現在のポーズ・表情のまま「アクリルスタンド」としてシーン内に実体化させます。
+                    <br>本物のVRMモデルよりも動作が軽いため、背景にたくさんのファンを配置したり、記念写真の中に「自分自身のパネル」を出すといった演出が可能です。
+                </p>
+            </div>
+        </section>
+
+        <section id="capture">
+            <h2>8. 撮影（通常・透過・一括）</h2>
+            <p>画面左下の「撮影・保存」ボタン、またはフレーム上のボタンで記録します。</p>
+
+            <h3>📸 撮影フレーム (形状マスク)</h3>
+            <p>16:9 や 1:1 などの定形枠のほか、「円形」「星型」「ハート型」などの特殊な形状で切り抜いた撮影が可能です。
+                <br>フレームで撮影した画像は<strong>自動的に高解像度化（4K相当）</strong>され、非常にクリアな画質で保存されます。
+            </p>
+
+            <h3>💎 透過PNG保存</h3>
+            <p>背景を透明にし、キャラクターやオブジェクトのみを切り抜いた状態で保存します。
+                <br>そのままSNS動画の素材にしたり、外部の画像編集ソフトで合成するのに最適です。
+            </p>
+
+            <div class="tip highlight-box">
+                <strong>🌟 特筆テクニック：一括透過保存</strong>
+                <p><strong>「一括操作」をON</strong>にして複数のVRMやGLBオブジェクトを選択している状態で透過保存を実行すると、<strong>選択中の全オブジェクトが1枚の透過画像に合成されて保存</strong>されます。
+                </p>
+                <p>※同様に「VRMからアクスタ作成」も、複数選択状態ならまとめて1つのアクスタになります。集合写真風のアクスタを作りたい時に活用してください。</p>
+            </div>
+        </section>
+
+        <section id="scene-management">
+            <h2>9. シーンの保存・読込</h2>
+            <p>配置したすべてのオブジェクト、ライトの設定、カメラの位置などを <code>.json</code> ファイルとして書き出せます。</p>
+            <div class="warning">
+                <strong>⚠️ 読込時の再選択について</strong>
+                <br>ブラウザのセキュリティ上の制限により、保存されたファイルパスを直接開くことはできません。
+                シーンを読み込む際、アプリが「どのモデルファイルを使うか」を尋ねるモーダルが表示されます。元々使用していたVRMやGLBファイルを再度指定してください。
+                <strong>位置、回転、ポーズ、表情などはすべて自動で元の通りに復元されます。</strong>
+            </div>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>10. トラブルシューティング</h2>
+            <dl>
+                <dt>Q. モデルが真っ黒、あるいは影がガタガタになります</dt>
+                <dd>A.
+                    一部のVRMモデル（MToonシェーダー）で発生することがあります。本ツールでは自動修正を試みますが、改善しない場合はスポットライトの角度（Angle）を広げるか、全体照明の強度を上げてください。
+                </dd>
+
+                <dt>Q. IK操作で関節がねじれます</dt>
+                <dd>A. IKターゲットを急激に動かしすぎると計算が追いつかずねじれることがあります。一度ポーズプリセットを適用してリセットするか、小さな歩幅で動かすようにしてください。</dd>
+
+                <dt>Q. 保存したシーンが読み込めません</dt>
+                <dd>A. ファイル選択モーダルで、正しいファイル形式（.vrm / .glb）を選択しているか確認してください。モデルの名前（ファイル名）が異なっていても、選択し直せば配置は復元されます。</dd>
+
+                <dt>Q. 動作を軽くしたい</dt>
+                <dd>A. 不要なスポットライトをオフにする、または「Bloom」の半径（Radius）を小さく設定すると描画負荷が軽減されます。</dd>
+            </dl>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Lumi-Vako Project - Created by MAGAIMONO</p>
+        </footer>
+    </div>
+</body>
+
+</html>
